@@ -1,0 +1,44 @@
+<script>
+let income = String(prompt());
+income = income.replace(/,/g,"");
+income = Number(income*100);
+let level1 = 987500;
+let level2 = 4012500;
+let level3 = 8552500;
+let level4 = 16330000;
+let level5 = 20735000;
+let level6 = 51840000;
+var interval = 1;
+var tax = 0;
+if(income>=level1 && income<level2) interval = 2; else 
+if(income>=level2 && income<level3) interval = 3; else
+if(income>=level3 && income<level4) interval = 4; else
+if(income>=level4 && income<level5) interval = 5; else
+if(income>=level5 && income<level6) interval = 6; else
+if(income>=level6) interval = 7;
+switch(interval){
+    case 1 :
+    tax = Math.ceil((income * 10) / 100) / 100;
+    break;
+    case 2 :
+    tax = Math.ceil(((level1  * 10) + (income-level1) * 12) / 100) / 100;
+    break;
+    case 3 :
+    tax = Math.ceil(((level1  * 10) + (level2-level1) * 12 + (income-level2) * 22) / 100) / 100;
+    break;
+    case 4 : 
+    tax = Math.ceil(((level1  * 10) + (level2-level1) * 12 + (level3-level2) * 22 + (income-level3) * 24) / 100) / 100;
+    break;
+    case 5 : 
+    tax = Math.ceil(((level1  * 10) + (level2-level1) * 12 + (level3-level2) * 22 + (level4-level3) * 24 + (income-level4) * 32) / 100) / 100;
+    break;
+    case 6 : 
+    tax = Math.ceil(((level1  * 10) + (level2-level1) * 12 + (level3-level2) * 22 + (level4-level3) * 24 + (level5-level4) * 32 + (income-level5) * 35) / 100) / 100;
+    break;
+}
+let cent = (tax % 1) * 100;
+console.log('Your tax is:', Math.trunc(tax), 'dollars, and:', cent, 'cents');
+
+ 
+
+</script>
